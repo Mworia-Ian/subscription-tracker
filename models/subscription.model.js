@@ -25,6 +25,7 @@ const subscriptionSchema = new mongoose.Schema(
     },
     category: {
       type: String,
+      lowercase: true,
       enum: [
         "sports",
         "news",
@@ -51,14 +52,14 @@ const subscriptionSchema = new mongoose.Schema(
       type: Date,
       required: true,
       validate: {
-        validate: (value) => value < new Date(),
+        validator: (value) => value < new Date(),
         message: "Start Date must be in the past",
       },
     },
     renewalDate: {
       type: Date,
       validate: {
-        validate: function (value) {
+        validator: function (value) {
           return value > this.startDate;
         },
         message: "Renewal Date must be after start date",
@@ -85,7 +86,7 @@ subscriptionSchema.pre("save", function (next) {
     };
 
     this.renewalDate = new Date(this.startDate);
-    this.renewalDate.startDate(
+    this.renewalDate.setDate(
       this.renewalDate.getDate() + renewalPeriods[this.frequency]
     );
   }
