@@ -2,13 +2,13 @@
 
 This is a subscription tracking API built using NodeJs. Complete with email reminder and date tracking you willbe abletokeep track of all of the users subscriptions regardless of the status.
 
-## ⚙️ Tech Stack
+## <a name="tech-stack">⚙️ Tech Stack</a>
 
 - Node.js
 - Express.js
 - MongoDB
 
-## 🔋 Features
+## <a name="features">🔋 Features</a>
 
 Advanced Rate Limiting and Bot Protection: with Arcjet that helps you secure the whole app.
 
